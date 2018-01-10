@@ -1,4 +1,3 @@
-bin
 jspm_packages
 bower_components
 .idea
@@ -6,8 +5,3 @@ screenshots
 client-cli
 client-wp
 npm-debug.log
-yarn-error.log
-
-# Build / ASP.Net Core
-bin
-obj
