@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14;
+var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -58,27 +58,29 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
 
     _initDefineProp(this, 'value', _descriptor3, this);
 
-    _initDefineProp(this, 'placeholder', _descriptor4, this);
+    _initDefineProp(this, 'id', _descriptor4, this);
 
-    _initDefineProp(this, 'iconBase', _descriptor5, this);
+    _initDefineProp(this, 'placeholder', _descriptor5, this);
 
-    _initDefineProp(this, 'withDateIcon', _descriptor6, this);
+    _initDefineProp(this, 'iconBase', _descriptor6, this);
 
-    _initDefineProp(this, 'bootstrapVersion', _descriptor7, this);
+    _initDefineProp(this, 'withDateIcon', _descriptor7, this);
 
-    _initDefineProp(this, 'buttonClass', _descriptor8, this);
+    _initDefineProp(this, 'bootstrapVersion', _descriptor8, this);
 
-    _initDefineProp(this, 'options', _descriptor9, this);
+    _initDefineProp(this, 'buttonClass', _descriptor9, this);
 
-    _initDefineProp(this, 'onHide', _descriptor10, this);
+    _initDefineProp(this, 'options', _descriptor10, this);
 
-    _initDefineProp(this, 'onShow', _descriptor11, this);
+    _initDefineProp(this, 'onHide', _descriptor11, this);
 
-    _initDefineProp(this, 'onChange', _descriptor12, this);
+    _initDefineProp(this, 'onShow', _descriptor12, this);
 
-    _initDefineProp(this, 'onError', _descriptor13, this);
+    _initDefineProp(this, 'onChange', _descriptor13, this);
 
-    _initDefineProp(this, 'onUpdate', _descriptor14, this);
+    _initDefineProp(this, 'onError', _descriptor14, this);
+
+    _initDefineProp(this, 'onUpdate', _descriptor15, this);
 
     this._events = {};
     this._methods = {};
@@ -102,16 +104,6 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
     this.options = Object.assign({}, globalPickerOptions, pickerOptions);
     this.domElm.datetimepicker(this.options);
 
-    this.domElm.on('dp.change', e => {
-      if (moment(e.date, this._format, true).isValid()) {
-        this.model = moment(e.date, this._format, true).toDate();
-        this.value = moment(e.date, this._format, true);
-      } else if (!e.date) {
-        this.model = null;
-        this.value = null;
-      }
-    });
-
     this.element = {
       events: this._events,
       options: pickerOptions,
@@ -120,34 +112,17 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
   }
 
   attachIconBase() {
-    let icons;
-
-    if (this.iconBase === 'font-awesome') {
-      icons = {
-        time: 'fa fa-clock-o',
-        date: 'fa fa-calendar',
-        up: 'fa fa-arrow-up',
-        down: 'fa fa-arrow-down',
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-calendar-check-o',
-        clear: 'fa fa-trash',
-        close: 'fa fa-window-close'
-      };
-    } else {
-      icons = {
-        time: 'glyphicon glyphicon-time',
-        date: 'glyphicon glyphicon-calendar',
-        up: 'glyphicon glyphicon-chevron-up',
-        down: 'glyphicon glyphicon-chevron-down',
-        previous: 'glyphicon glyphicon-chevron-left',
-        next: 'glyphicon glyphicon-chevron-right',
-        today: 'glyphicon glyphicon-screenshot',
-        clear: 'glyphicon glyphicon-trash',
-        close: 'glyphicon glyphicon-remove'
-      };
-    }
-    return icons;
+    return {
+      time: 'fa fa-clock-o',
+      date: 'fa fa-calendar',
+      up: 'fa fa-arrow-up',
+      down: 'fa fa-arrow-down',
+      previous: 'fa fa-chevron-left',
+      next: 'fa fa-chevron-right',
+      today: 'fa fa-calendar-check-o',
+      clear: 'fa fa-trash',
+      close: 'fa fa-window-close'
+    };
   }
 
   bind() {
@@ -155,7 +130,7 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
     this.options = Object.assign({}, globalPickerOptions, pickerOptions);
 
     if (this.options) {
-      this._format = this._originalDateFormat = this.options.hasOwnProperty('format') ? this.options.format : 'YYYY-MM-DD';
+      this._format = this._originalDateFormat = this.options.hasOwnProperty('format') ? this.options.format : 'YYYY-MM-DD HH:mm A';
     }
     if (this.model) {
       this._originalDateObject = moment(this.model, this._format, true).toDate() || this.elm.getAttribute('model');
@@ -251,6 +226,8 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
   }
 
   detached() {
+    this.value = null;
+    this.model = null;
     this.domElm.data('DateTimePicker').destroy();
   }
 
@@ -299,49 +276,52 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
 }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec4], {
   enumerable: true,
   initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [bindable], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'id', [bindable], {
+  enumerable: true,
+  initializer: null
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [bindable], {
   enumerable: true,
   initializer: function () {
     return '';
   }
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'iconBase', [bindable], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'iconBase', [bindable], {
   enumerable: true,
   initializer: function () {
     return globalExtraOptions.iconBase;
   }
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'withDateIcon', [bindable], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'withDateIcon', [bindable], {
   enumerable: true,
   initializer: function () {
     return globalExtraOptions.withDateIcon;
   }
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'bootstrapVersion', [bindable], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'bootstrapVersion', [bindable], {
   enumerable: true,
   initializer: function () {
     return globalExtraOptions.bootstrapVersion;
   }
-}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'buttonClass', [bindable], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'buttonClass', [bindable], {
   enumerable: true,
   initializer: function () {
     return globalExtraOptions.buttonClass;
   }
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'options', [bindable], {
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'options', [bindable], {
   enumerable: true,
   initializer: function () {
     return {};
   }
-}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'onHide', [bindable], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'onHide', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'onShow', [bindable], {
+}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'onShow', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'onChange', [bindable], {
+}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, 'onChange', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, 'onError', [bindable], {
+}), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, 'onError', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, 'onUpdate', [bindable], {
+}), _descriptor15 = _applyDecoratedDescriptor(_class2.prototype, 'onUpdate', [bindable], {
   enumerable: true,
   initializer: null
 })), _class2)) || _class);
