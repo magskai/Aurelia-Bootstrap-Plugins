@@ -241,7 +241,7 @@ export class AbpDatetimePickerCustomElement {
       { name: 'widgetPositioning', type: 'getterSetter' }
     ];
 
-    // loop through all methods and construct them before exponsing them to the element object
+    // loop through all methods and construct them before exposing them to the element object
     let methods = {};
     methodList.forEach((method) => {
       methods[method.name] = this.constructMethod(method.type, method.name);
