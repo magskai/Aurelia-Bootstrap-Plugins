@@ -251,6 +251,8 @@ export class AbpDatetimePickerCustomElement {
   }
 
   detached() {
+    this.value = null;
+    this.model = null;
     this.domElm.data('DateTimePicker').destroy();
   }
 
