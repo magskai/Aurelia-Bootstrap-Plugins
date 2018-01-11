@@ -82,34 +82,17 @@ export class AbpDatetimePickerCustomElement {
   }
 
   attachIconBase() {
-    let icons;
-
-    if (this.iconBase === 'font-awesome') {
-      icons = {
-        time: 'fa fa-clock-o',
-        date: 'fa fa-calendar',
-        up: 'fa fa-arrow-up',
-        down: 'fa fa-arrow-down',
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-calendar-check-o',
-        clear: 'fa fa-trash',
-        close: 'fa fa-window-close'
-      };
-    } else {
-      icons = {
-        time: 'glyphicon glyphicon-time',
-        date: 'glyphicon glyphicon-calendar',
-        up: 'glyphicon glyphicon-chevron-up',
-        down: 'glyphicon glyphicon-chevron-down',
-        previous: 'glyphicon glyphicon-chevron-left',
-        next: 'glyphicon glyphicon-chevron-right',
-        today: 'glyphicon glyphicon-screenshot',
-        clear: 'glyphicon glyphicon-trash',
-        close: 'glyphicon glyphicon-remove'
-      };
+    return {
+      time: 'fa fa-clock-o',
+      date: 'fa fa-calendar',
+      up: 'fa fa-arrow-up',
+      down: 'fa fa-arrow-down',
+      previous: 'fa fa-chevron-left',
+      next: 'fa fa-chevron-right',
+      today: 'fa fa-calendar-check-o',
+      clear: 'fa fa-trash',
+      close: 'fa fa-window-close'
     }
-    return icons;
   }
 
   /**
