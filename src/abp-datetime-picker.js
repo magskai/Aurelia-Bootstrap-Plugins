@@ -9,6 +9,7 @@ export class AbpDatetimePickerCustomElement {
   @bindable({defaultBindingMode: bindingMode.twoWay}) element;
   @bindable({defaultBindingMode: bindingMode.twoWay}) model;
   @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+  @bindable id;
   @bindable placeholder = '';
 
   // plugin own variables
