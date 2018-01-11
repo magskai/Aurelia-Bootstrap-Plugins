@@ -61,17 +61,6 @@ export class AbpDatetimePickerCustomElement {
     this.options = Object.assign({}, globalPickerOptions, pickerOptions);
     this.domElm.datetimepicker(this.options);
 
-    // update Value & Model binding on a Date picker changed (watch)
-    this.domElm.on('dp.change', (e) => {
-      if (moment(e.date, this._format, true).isValid()) {
-        this.model = moment(e.date, this._format, true).toDate();
-        this.value = moment(e.date, this._format, true);
-      } else if (!e.date) {
-        this.model = null;
-        this.value = null;
-      }
-    });
-
     // expose the element object to the outside
     // this will be useful for calling events/methods/options from the outside
     this.element = {
