@@ -253,7 +253,8 @@ export class AbpDatetimePickerCustomElement {
   detached() {
     this.value = null;
     this.model = null;
-    this.domElm.data('DateTimePicker').destroy();
+    this.domElm.data('DateTimePicker').minDate(false);
+    this.domElm.data('DateTimePicker').maxDate(false);
   }
 
   getOption(optionName) {
