@@ -153,7 +153,7 @@ define(['exports', 'aurelia-framework', 'moment', 'jquery', './picker-global-opt
       this.options = Object.assign({}, _pickerGlobalOptions.globalPickerOptions, pickerOptions);
 
       if (this.options) {
-        this._format = this._originalDateFormat = this.options.hasOwnProperty('format') ? this.options.format : 'YYYY-MM-DD HH:mm A';
+        this._format = this._originalDateFormat = this.options.hasOwnProperty('format') ? this.options.format : 'YYYY-MM-DD hh:mm A';
       }
       if (this.model) {
         this._originalDateObject = (0, _moment2.default)(this.model, this._format, true).toDate() || this.elm.getAttribute('model');

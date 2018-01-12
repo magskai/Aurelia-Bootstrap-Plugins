@@ -155,7 +155,7 @@ System.register(['aurelia-framework', 'moment', 'jquery', 'eonasdan-bootstrap-da
           this.options = Object.assign({}, globalPickerOptions, pickerOptions);
 
           if (this.options) {
-            this._format = this._originalDateFormat = this.options.hasOwnProperty('format') ? this.options.format : 'YYYY-MM-DD HH:mm A';
+            this._format = this._originalDateFormat = this.options.hasOwnProperty('format') ? this.options.format : 'YYYY-MM-DD hh:mm A';
           }
           if (this.model) {
             this._originalDateObject = moment(this.model, this._format, true).toDate() || this.elm.getAttribute('model');
