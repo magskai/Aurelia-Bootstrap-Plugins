@@ -1,6 +1,6 @@
 <template>
   <!-- Bootstrap version 3 -->
-  <div if.bind="bootstrapVersion == 3" class.bind="parseBool(withDateIcon) ? 'input-group date' : 'date'">
+  <div if.bind="!noUI && bootstrapVersion == 3" class.bind="parseBool(withDateIcon) ? 'input-group date' : 'date'">
     <input type="text" class="form-control datetimepicker ${id}"
            value.bind="value"
            model.bind="model"
@@ -13,7 +13,7 @@
   </div>
 
   <!-- Bootstrap version 4 -->
-  <div if.bind="bootstrapVersion == 4" class.bind="parseBool(withDateIcon) ? 'input-group' : 'date'">
+  <div if.bind="!noUI && bootstrapVersion == 4" class.bind="parseBool(withDateIcon) ? 'input-group' : 'date'">
     <input type="text" class="form-control date datetimepicker ${id}"
            value.bind="value"
            model.bind="model"
@@ -25,5 +25,9 @@
             <span class="fa fa-calendar"></span>
           </button>
       </span>
+  </div>
+
+  <div if.bind="noUI" class.bind="parseBool(withDateIcon) ? 'input-group' : 'date'">
+    <span class="fa fa-calendar"></span>
   </div>
 </template>
