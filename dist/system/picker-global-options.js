@@ -11,7 +11,8 @@ System.register([], function (_export, _context) {
         buttonClass: 'btn btn-outline-secondary',
         bootstrapVersion: 3,
         iconBase: 'glyphicon',
-        withDateIcon: true
+        withDateIcon: true,
+        noUI: false
       });
 
       _export('globalExtraOptions', globalExtraOptions);

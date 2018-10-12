@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15;
+var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -68,19 +68,21 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
 
     _initDefineProp(this, 'bootstrapVersion', _descriptor8, this);
 
-    _initDefineProp(this, 'buttonClass', _descriptor9, this);
+    _initDefineProp(this, 'noUI', _descriptor9, this);
 
-    _initDefineProp(this, 'options', _descriptor10, this);
+    _initDefineProp(this, 'buttonClass', _descriptor10, this);
 
-    _initDefineProp(this, 'onHide', _descriptor11, this);
+    _initDefineProp(this, 'options', _descriptor11, this);
 
-    _initDefineProp(this, 'onShow', _descriptor12, this);
+    _initDefineProp(this, 'onHide', _descriptor12, this);
 
-    _initDefineProp(this, 'onChange', _descriptor13, this);
+    _initDefineProp(this, 'onShow', _descriptor13, this);
 
-    _initDefineProp(this, 'onError', _descriptor14, this);
+    _initDefineProp(this, 'onChange', _descriptor14, this);
 
-    _initDefineProp(this, 'onUpdate', _descriptor15, this);
+    _initDefineProp(this, 'onError', _descriptor15, this);
+
+    _initDefineProp(this, 'onUpdate', _descriptor16, this);
 
     this._events = {};
     this._methods = {};
@@ -91,7 +93,11 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
   }
 
   attached() {
-    this.domElm = $(this.elm).find('.date');
+    if (this.noUI) {
+      this.domElm = $(this.elm);
+    } else {
+      this.domElm = $(this.elm).find('.date');
+    }
 
     let pickerOptions = this.options || {};
     if (!this.options || this.options && !this.options.icons) {
@@ -300,29 +306,34 @@ export let AbpDatetimePickerCustomElement = (_dec = inject(Element), _dec2 = bin
   initializer: function () {
     return globalExtraOptions.bootstrapVersion;
   }
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'buttonClass', [bindable], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'noUI', [bindable], {
+  enumerable: true,
+  initializer: function () {
+    return globalExtraOptions.noUI;
+  }
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'buttonClass', [bindable], {
   enumerable: true,
   initializer: function () {
     return globalExtraOptions.buttonClass;
   }
-}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'options', [bindable], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'options', [bindable], {
   enumerable: true,
   initializer: function () {
     return {};
   }
-}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'onHide', [bindable], {
+}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'onHide', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'onShow', [bindable], {
+}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, 'onShow', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, 'onChange', [bindable], {
+}), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, 'onChange', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, 'onError', [bindable], {
+}), _descriptor15 = _applyDecoratedDescriptor(_class2.prototype, 'onError', [bindable], {
   enumerable: true,
   initializer: null
-}), _descriptor15 = _applyDecoratedDescriptor(_class2.prototype, 'onUpdate', [bindable], {
+}), _descriptor16 = _applyDecoratedDescriptor(_class2.prototype, 'onUpdate', [bindable], {
   enumerable: true,
   initializer: null
 })), _class2)) || _class);

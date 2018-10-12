@@ -16,6 +16,7 @@ export class AbpDatetimePickerCustomElement {
   @bindable iconBase = globalExtraOptions.iconBase;
   @bindable withDateIcon = globalExtraOptions.withDateIcon;
   @bindable bootstrapVersion = globalExtraOptions.bootstrapVersion;
+  @bindable noUI = globalExtraOptions.noUI;
   @bindable buttonClass = globalExtraOptions.buttonClass;
 
   // picker options
@@ -45,7 +46,11 @@ export class AbpDatetimePickerCustomElement {
 
   attached() {
     // reference to the DOM element
-    this.domElm = $(this.elm).find('.date');
+    if (this.noUI) {
+      this.domElm = $(this.elm);
+    } else {
+      this.domElm = $(this.elm).find('.date');
+    }
 
     // add base icons, unless user already added some
     let pickerOptions = this.options || {};
